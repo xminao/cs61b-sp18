@@ -91,7 +91,7 @@ public class LinkedListDequeTest {
 	@Test
 	public static void getTest() {
 		LinkedListDeque<Integer> deque = new LinkedListDeque<>();
-		for (int i=0; i<10; i++) {
+		for (int i = 0; i < 10; i++) {
 			deque.addFirst(i);
 		}
 		assertEquals(9, (Object) deque.get(0));
@@ -105,4 +105,4 @@ public class LinkedListDequeTest {
 //		addRemoveTest();
 		getTest();
 	}
-} 
+}

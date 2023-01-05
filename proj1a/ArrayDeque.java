@@ -115,7 +115,7 @@ public class ArrayDeque<T> {
      * @return the item removed.
      */
     public T removeFirst() {
-        if (length >= 16 && length/size >= 4) {
+        if (length >= 16 && length / size >= 4) {
             shrinkArray();
         }
         if (size == 0) {
@@ -133,7 +133,7 @@ public class ArrayDeque<T> {
      * @return the item removed
      */
     public T removeLast() {
-        if (length >= 16 && length/size >= 4) {
+        if (length >= 16 && length / size >= 4) {
             shrinkArray();
         }
         if (size == 0) {
@@ -157,7 +157,7 @@ public class ArrayDeque<T> {
         }
 
         int ptr = nextFirst;
-        for (int i=0; i<index; i++) {
+        for (int i = 0; i < index; i++) {
             ptr = plusOne(ptr, length);
         }
         return array[ptr];

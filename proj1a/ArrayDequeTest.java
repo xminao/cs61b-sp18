@@ -9,7 +9,7 @@ public class ArrayDequeTest {
         for (int i = 0; i < 5; i++) {
             array.addFirst(i);
         }
-        for (int i = -5; i<0; i++) {
+        for (int i = -5; i < 0; i++) {
             array.addLast(i);
         }
         assertEquals(10, array.size());
@@ -43,13 +43,13 @@ public class ArrayDequeTest {
     @Test
     public static void getTest () {
         ArrayDeque<Integer> array = new ArrayDeque<>();
-        for (int i=0; i<5; i++) {
+        for (int i = 0; i < 5; i++) {
             array.addFirst(i);
         }
         assertEquals(3, (Object)array.get(1));
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         //expandTest();
         //shrinkTest();
         //removeTest();

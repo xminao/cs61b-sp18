@@ -89,7 +89,7 @@ public class LinkedListDeque<T> {
         int i = 0;
         while (i != index) {
             n = n.next;
-            i ++;
+            i++;
         }
         item = n.item;
 

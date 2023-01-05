@@ -40,10 +40,20 @@ public class ArrayDequeTest {
         array.printDeque();
     }
 
+    @Test
+    public static void getTest () {
+        ArrayDeque<Integer> array = new ArrayDeque<>();
+        for (int i=0; i<5; i++) {
+            array.addFirst(i);
+        }
+        assertEquals(3, (Object)array.get(1));
+    }
+
     public static void main(String args[]) {
         //expandTest();
-        shrinkTest();
+        //shrinkTest();
         //removeTest();
+        getTest();
     }
 
 }

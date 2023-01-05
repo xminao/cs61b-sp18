@@ -146,6 +146,23 @@ public class ArrayDeque<T> {
         return item;
     }
 
+    /**
+     * get the item in position index.
+     * @param index
+     * @return the item got
+     */
+    public T get(int index) {
+        if (index >= size) {
+            return null;
+        }
+
+        int ptr = nextFirst;
+        for (int i=0; i<index; i++) {
+            ptr = plusOne(ptr, length);
+        }
+        return array[ptr];
+    }
+
     public void printDeque() {
         int ptr = nextFirst;
         while (ptr != nextLast) {

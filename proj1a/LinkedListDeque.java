@@ -86,7 +86,7 @@ public class LinkedListDeque<T> {
 
         T item;
         Node n = sentinel.next;
-        int i = 1;
+        int i = 0;
         while (i != index) {
             n = n.next;
             i ++;
@@ -107,7 +107,7 @@ public class LinkedListDeque<T> {
         if (index >= size) {
             return null;
         }
-        return getRecursiveHelp(sentinel, index);
+        return getRecursiveHelp(sentinel.next, index);
     }
 
 

@@ -36,7 +36,7 @@ public class ArrayDeque<T> {
     /**
      * @return index - 1
      */
-    public int minusOne(int index) {
+    private int minusOne(int index) {
         if (index == 0) {
             return length - 1;
         }
@@ -46,7 +46,7 @@ public class ArrayDeque<T> {
     /**
      * @return the index + 1
      */
-    public int plusOne(int index, int module) {
+    private int plusOne(int index, int module) {
         index %= module;
         if (index == module - 1) {
             return 0;
@@ -54,7 +54,7 @@ public class ArrayDeque<T> {
         return index + 1;
     }
 
-    public void expandArray() {
+    private void expandArray() {
         T[] newArray = (T[]) new Object[length * 2];
         int ptr1 = nextFirst;
         int ptr2 = 0;
@@ -69,7 +69,7 @@ public class ArrayDeque<T> {
         length = length * 2;
     }
 
-    public void shrinkArray() {
+    private void shrinkArray() {
         T[] newArray = (T[]) new Object[length / 2];
         int ptr1 = nextFirst;
         int ptr2 = 0;

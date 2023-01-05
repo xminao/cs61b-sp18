@@ -41,7 +41,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public static void getTest(){
+    public static void getTest() {
         ArrayDeque<Integer> array = new ArrayDeque<>();
         for (int i = 0; i < 5; i++) {
             array.addFirst(i);

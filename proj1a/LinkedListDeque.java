@@ -96,7 +96,7 @@ public class LinkedListDeque<T> {
         return item;
     }
 
-    public T getRecursiveHelp(Node n, int index) {
+    private T getRecursiveHelp(Node n, int index) {
         if (index == 0) {
             return n.item;
         }

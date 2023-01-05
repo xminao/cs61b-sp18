@@ -41,12 +41,12 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public static void getTest () {
+    public static void getTest(){
         ArrayDeque<Integer> array = new ArrayDeque<>();
         for (int i = 0; i < 5; i++) {
             array.addFirst(i);
         }
-        assertEquals(3, (Object)array.get(1));
+        assertEquals(3, (Object) array.get(1));
     }
 
     public static void main(String[] args) {

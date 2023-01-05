@@ -1,4 +1,3 @@
-
 public class LinkedListDeque<T> {
     private Node sentinel;
     private int size;
@@ -41,7 +40,7 @@ public class LinkedListDeque<T> {
     }
 
     public boolean isEmpty() {
-       return size == 0;
+        return size == 0;
     }
 
     public int size() {

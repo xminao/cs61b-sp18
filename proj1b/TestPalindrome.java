@@ -19,15 +19,18 @@ public class TestPalindrome {
     @Test
     public void testIsPalindrome() {
         assertTrue(palindrome.isPalindrome(""));
+        assertTrue(palindrome.isPalindrome("a"));
         assertTrue(palindrome.isPalindrome("noon"));
         assertFalse(palindrome.isPalindrome("horse"));
 
         CharacterComparator cc = new OffByOne();
         assertTrue(palindrome.isPalindrome("", cc));
+        assertTrue(palindrome.isPalindrome("a", cc));
         assertTrue(palindrome.isPalindrome("tress", cc));
         assertFalse(palindrome.isPalindrome("noon", cc));
 
         cc = new OffByN(5);
+        assertTrue(palindrome.isPalindrome("", cc));
         assertTrue(palindrome.isPalindrome("a", cc));
         assertTrue(palindrome.isPalindrome("tiny", cc));
         assertFalse(palindrome.isPalindrome("noon", cc));

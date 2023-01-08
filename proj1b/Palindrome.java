@@ -34,4 +34,31 @@ public class Palindrome {
         }
         return isPalindromeHelper(deque);
     }
+
+    private boolean isPalindromeHelper(Deque<Character> d, CharacterComparator cc) {
+        // base case
+        if (d.size() == 0 || d.size() == 1) {
+            return true;
+        }
+        if (cc.equalChars(d.removeFirst(), d.removeLast())) {
+            return isPalindromeHelper(d, cc);
+        }
+        return false;
+    }
+
+    /**
+     * return true if the given word is a palindrome, otherwise false
+     * @param word
+     * @param cc
+     * @return
+     */
+    public boolean isPalindrome(String word, CharacterComparator cc) {
+        Deque<Character> deque = new ArrayDeque<>();
+        for (int i = 0; i < word.length(); i += 1) {
+            deque.addLast(word.charAt(i));
+        }
+        return isPalindromeHelper(deque, cc);
+    }
+
+
 }

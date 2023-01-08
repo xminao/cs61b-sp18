@@ -1,4 +1,4 @@
-public class LinkedListDeque<T> implements Deque<T>{
+public class LinkedListDeque<T> implements Deque<T> {
     private Node sentinel;
     private int size;
     private class Node {
@@ -116,6 +116,4 @@ public class LinkedListDeque<T> implements Deque<T>{
         }
         return getRecursiveHelp(sentinel.next, index);
     }
-
-
 }

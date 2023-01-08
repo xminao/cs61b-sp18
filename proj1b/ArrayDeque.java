@@ -3,7 +3,7 @@
  * deque implement by array.
  * @author xmina
  */
-public class ArrayDeque<T> implements Deque<T>{
+public class ArrayDeque<T> implements Deque<T> {
     private T[] array;
     private int length;
     private int size;

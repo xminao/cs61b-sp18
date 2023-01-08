@@ -28,6 +28,10 @@ public class Palindrome {
      * @return
      */
     public boolean isPalindrome(String word) {
+        if (word == null || word.length() <= 1) {
+            return true;
+        }
+
         Deque<Character> deque = new ArrayDeque<>();
         for (int i = 0; i < word.length(); i += 1) {
             deque.addLast(word.charAt(i));
@@ -53,6 +57,10 @@ public class Palindrome {
      * @return
      */
     public boolean isPalindrome(String word, CharacterComparator cc) {
+        if (word == null || word.length() <= 1) {
+            return true;
+        }
+
         Deque<Character> deque = new ArrayDeque<>();
         for (int i = 0; i < word.length(); i += 1) {
             deque.addLast(word.charAt(i));

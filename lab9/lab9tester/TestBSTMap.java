@@ -99,7 +99,7 @@ public class TestBSTMap {
         System.out.println(bstmap.get("cat"));
         System.out.println(bstmap.get("fish"));
         System.out.println(bstmap.get("zebra"));
-        bstmap.remove("cat");
+        bstmap.remove("hello");
         System.out.println(bstmap.get("hello"));
         System.out.println(bstmap.get("cat"));
         System.out.println(bstmap.get("fish"));

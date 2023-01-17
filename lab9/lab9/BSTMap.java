@@ -168,7 +168,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
             }
             Node t = p;
             p = Max(p.left);
-            p.left = deleteMax(p.left);
+            p.left = deleteMax(t.left);
             p.right = t.right;
         }
 

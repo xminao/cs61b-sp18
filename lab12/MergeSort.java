@@ -1,4 +1,8 @@
+import edu.princeton.cs.algs4.Merge;
 import edu.princeton.cs.algs4.Queue;
+
+import javax.imageio.ImageReader;
+import java.util.Iterator;
 
 public class MergeSort {
     /**
@@ -34,8 +38,16 @@ public class MergeSort {
     /** Returns a queue of queues that each contain one item from items. */
     private static <Item extends Comparable> Queue<Queue<Item>>
             makeSingleItemQueues(Queue<Item> items) {
-        // Your code here!
-        return null;
+        Queue<Queue<Item>> queues = new Queue<>();
+        Queue<Item> item;
+
+        Iterator<Item> iter = items.iterator();
+        while (iter.hasNext()) {
+            item = new Queue<>();
+            item.enqueue(iter.next());
+            queues.enqueue(item);
+        }
+        return queues;
     }
 
     /**
@@ -53,14 +65,51 @@ public class MergeSort {
      */
     private static <Item extends Comparable> Queue<Item> mergeSortedQueues(
             Queue<Item> q1, Queue<Item> q2) {
-        // Your code here!
-        return null;
+        Queue<Item> queue = new Queue<>();
+        while (!q1.isEmpty() || !q2.isEmpty()) {
+            queue.enqueue(getMin(q1, q2));
+        }
+        return queue;
     }
 
     /** Returns a Queue that contains the given items sorted from least to greatest. */
     public static <Item extends Comparable> Queue<Item> mergeSort(
             Queue<Item> items) {
-        // Your code here!
-        return items;
+        if (items.size() <= 1) {
+            return items;
+        }
+        Queue<Queue<Item>> queues = makeSingleItemQueues(items);
+        while (queues.size() != 1) {
+            Queue<Queue<Item>> temp = new Queue<>();
+            while (!queues.isEmpty()) {
+                Queue<Item> q1 = queues.dequeue();
+                Queue<Item> q2 = queues.isEmpty() ? new Queue<>() : queues.dequeue();
+                temp.enqueue(mergeSortedQueues(q1, q2));
+            }
+            queues = temp;
+        }
+        return queues.dequeue();
+    }
+
+    /** Test */
+    public static void main(String[] args) {
+        Queue<String> queue = new Queue<>();
+        queue.enqueue("Alice");
+        queue.enqueue("Vanessa");
+        queue.enqueue("Ethan");
+
+        // Unsorted
+        System.out.println("Unsorted Queue: ");
+        System.out.println(queue);
+
+        // MergeSorted
+        queue = MergeSort.mergeSort(queue);
+        System.out.println("MergeSorted Queue: ");
+        System.out.println(queue);
+
+        // SingleItemQueues
+        Queue<Queue<String>> queues = makeSingleItemQueues(queue);
+        System.out.println("SingleItemQueue Queue: ");
+        System.out.println(queues);
     }
 }

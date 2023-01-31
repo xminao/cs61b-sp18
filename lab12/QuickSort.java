@@ -48,16 +48,14 @@ public class QuickSort {
             Queue<Item> unsorted, Item pivot,
             Queue<Item> less, Queue<Item> equal, Queue<Item> greater) {
         // Your code here!
-        Item item;
-        while (!unsorted.isEmpty()) {
-            item = unsorted.dequeue();
-            int compare = item.compareTo(pivot);
+        for (Item x : unsorted) {
+            int compare = x.compareTo(pivot);
             if (compare < 0) {
-                less.enqueue(item);
+                less.enqueue(x);
             } else if (compare > 0) {
-                greater.enqueue(item);
+                greater.enqueue(x);
             } else {
-                equal.enqueue(item);
+                equal.enqueue(x);
             }
         }
     }
@@ -74,10 +72,11 @@ public class QuickSort {
         Queue<Item> less = new Queue<>();
         Queue<Item> equal = new Queue<>();
         Queue<Item> greater = new Queue<>();
-        partition(items, getRandomItem(items), less, equal, greater);
-        queue = catenate(quickSort(less), quickSort(equal));
-        queue = catenate(queue, quickSort(greater));
-
+        Item pivot = getRandomItem(items);
+        partition(items, pivot, less, equal, greater);
+        less = quickSort(less);
+        greater = quickSort(greater);
+        queue = catenate(catenate(less, equal), greater);
         return queue;
     }
 
@@ -86,6 +85,8 @@ public class QuickSort {
         Queue<String> queue = new Queue<>();
         queue.enqueue("Alice");
         queue.enqueue("Vanessa");
+        queue.enqueue("Ethan");
+        queue.enqueue("Ethan");
         queue.enqueue("Ethan");
 
         // Unsorted
@@ -96,5 +97,15 @@ public class QuickSort {
         queue = QuickSort.quickSort(queue);
         System.out.println("QuickSorted Queue: ");
         System.out.println(queue);
+//        Queue<String> q1 = new Queue<>();
+//        Queue<String> q2 = new Queue<>();
+//        Queue<String> q3 = new Queue<>();
+//        Queue<String> queue;
+//        q2.enqueue("test");
+//        q2.enqueue("test");
+//        System.out.print(getRandomItem(q1));
+//        queue = catenate(q1, q2);
+//        queue = catenate(queue, q3);
+//        System.out.print(queue);
     }
 }

@@ -23,8 +23,9 @@ public class SimpleOomage implements Oomage {
         if (this == o) {
             return true;
         }
-        SimpleOomage oomage = (SimpleOomage) o;
-        return (this.red == oomage.red) && (this.blue == oomage.blue) && (this.green == oomage.green);
+        SimpleOomage s = (SimpleOomage) o;
+
+        return (this.red == s.red) && (this.blue == s.blue) && (this.green == s.green);
     }
 
     @Override
@@ -32,7 +33,7 @@ public class SimpleOomage implements Oomage {
         if (!USE_PERFECT_HASH) {
             return red + green + blue;
         } else {
-            int code = (red / 5) * 11 * 11 + (blue / 5) * 11 + (green / 5);
+            int code = (red / 5 << 16) + (blue / 5 << 8) + (green / 5);
             return code;
         }
     }

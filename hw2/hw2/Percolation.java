@@ -2,8 +2,6 @@ package hw2;
 
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
-import javax.imageio.plugins.tiff.TIFFDirectory;
-
 public class Percolation {
 
     private int N;
@@ -55,32 +53,35 @@ public class Percolation {
         if (!validSite(row, col)) {
             throw new IndexOutOfBoundsException();
         }
-        int index = rcTo1D(row, col);
-        grid[row][col] = true;
-        numberOpened += 1;
-        // left, right, top, bottom neighbor.
-        if (validSite(row, col - 1) && isOpen(row, col - 1)) {
-            unionSet.union(index, rcTo1D(row, col - 1));
-            unionSetWithB.union(index, rcTo1D(row, col - 1));
-        }
-        if (validSite(row, col + 1) && isOpen(row, col + 1)) {
-            unionSet.union(index, rcTo1D(row, col + 1));
-            unionSetWithB.union(index, rcTo1D(row, col + 1));
-        }
-        if (validSite(row - 1, col) && isOpen(row - 1, col)) {
-            unionSet.union(index, rcTo1D(row - 1, col));
-            unionSetWithB.union(index, rcTo1D(row - 1, col));
-        }
-        if (validSite(row + 1, col) && isOpen(row + 1, col)) {
-            unionSet.union(index, rcTo1D(row + 1, col));
-            unionSetWithB.union(index, rcTo1D(row + 1, col));
-        }
-        // is connected to top or bottom.
-        if (row == 0) {
-            unionSet.union(index, virtualTop);
-            unionSetWithB.union(index, virtualTop);
-        } else if (row == N - 1) {
-            unionSetWithB.union(index, virtualBottom);
+        if (!isOpen(row, col)) {
+            int index = rcTo1D(row, col);
+            grid[row][col] = true;
+            numberOpened += 1;
+            // left, right, top, bottom neighbor.
+            if (validSite(row, col - 1) && isOpen(row, col - 1)) {
+                unionSet.union(index, rcTo1D(row, col - 1));
+                unionSetWithB.union(index, rcTo1D(row, col - 1));
+            }
+            if (validSite(row, col + 1) && isOpen(row, col + 1)) {
+                unionSet.union(index, rcTo1D(row, col + 1));
+                unionSetWithB.union(index, rcTo1D(row, col + 1));
+            }
+            if (validSite(row - 1, col) && isOpen(row - 1, col)) {
+                unionSet.union(index, rcTo1D(row - 1, col));
+                unionSetWithB.union(index, rcTo1D(row - 1, col));
+            }
+            if (validSite(row + 1, col) && isOpen(row + 1, col)) {
+                unionSet.union(index, rcTo1D(row + 1, col));
+                unionSetWithB.union(index, rcTo1D(row + 1, col));
+            }
+            // is connected to top or bottom.
+            if (row == 0) {
+                unionSet.union(index, virtualTop);
+                unionSetWithB.union(index, virtualTop);
+            }
+            if (row == N - 1) {
+                unionSetWithB.union(index, virtualBottom);
+            }
         }
     }
 

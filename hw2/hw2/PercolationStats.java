@@ -44,11 +44,4 @@ public class PercolationStats {
         double right = 1.96 * stddev() / Math.sqrt(fraction.length);
         return mean() + right;
     }
-
-    public static void main(String[] args) {
-        PercolationStats ps = new PercolationStats(20, 10, new PercolationFactory());
-        System.out.println(ps.mean());
-        System.out.println(ps.confidenceLow());
-        System.out.println(ps.confidenceHigh());
-    }
 }

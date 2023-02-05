@@ -100,7 +100,6 @@ public class Board implements WorldState {
 
     public int manhattan() {
         int sum = 0;
-        System.out.println(N);
         for (int i = 0; i < N; i += 1) {
             for (int j = 0; j < N; j += 1) {
                 if (_initial[i][j] != BLANK) {

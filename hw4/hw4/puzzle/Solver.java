@@ -70,7 +70,6 @@ public class Solver {
      *  the puzzle starting at the initial WorldState. */
     public int moves() {
         return _goal.numberMoves;
-        //return _initial.state.estimatedDistanceToGoal();
     }
 
     /** Returns a sequence of WorldStates from the initial

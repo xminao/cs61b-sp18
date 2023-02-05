@@ -127,16 +127,13 @@ public class Board implements WorldState {
         if (this.N != b.N) {
             return false;
         }
-        if (this._initial != b._initial) {
-            return false;
+        for (int i = 0; i < N; i += 1) {
+            for (int j = 0; j < N; j += 1) {
+                if (this._initial[i][j] != b._initial[i][j]) {
+                    return false;
+                }
+            }
         }
-//        for (int i = 0; i < N; i += 1) {
-//            for (int j = 0; j < N; j += 1) {
-//                if (this._initial[i][j] != b._initial[i][j]) {
-//                    return false;
-//                }
-//            }
-//        }
         return true;
     }
 
@@ -158,22 +155,5 @@ public class Board implements WorldState {
         }
         s.append("\n");
         return s.toString();
-    }
-
-    public static void main(String[] args) {
-        int[][] a = {
-                {1, 0, 2},
-                {7, 5, 4},
-                {8, 6, 3}
-        };
-        int[][] b = {
-                {1, 2, 4, 9},
-                {3, 5, 6, 10},
-                {7, 0, 8, 11},
-                {12, 13, 14, 15}
-        };
-        Board bA = new Board(a);
-        Board bB = new Board(b);
-        System.out.println(bA.manhattan());
     }
 }

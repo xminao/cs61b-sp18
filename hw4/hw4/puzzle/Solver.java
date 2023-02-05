@@ -43,6 +43,9 @@ public class Solver {
     }
 
     private void search() {
+        if (queue.isEmpty()) {
+            return;
+        }
         SearchNode node = queue.delMin();
         if (node.state.isGoal()) {
             _goal = node;
@@ -66,7 +69,8 @@ public class Solver {
     /** Returns the minimum number of moves to solve
      *  the puzzle starting at the initial WorldState. */
     public int moves() {
-        return _initial.state.estimatedDistanceToGoal();
+        return _goal.numberMoves;
+        //return _initial.state.estimatedDistanceToGoal();
     }
 
     /** Returns a sequence of WorldStates from the initial
@@ -80,5 +84,4 @@ public class Solver {
         }
         return list;
     }
-
 }

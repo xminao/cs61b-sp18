@@ -90,15 +90,21 @@ public class Board implements WorldState {
         return wrong;
     }
 
+    private int goalRow(int i, int j) {
+        return (_initial[i][j] - 1) / N;
+    }
+
+    private int goalCol(int i, int j) {
+        return _initial[i][j] - goalRow(i, j) * N - 1;
+    }
+
     public int manhattan() {
         int sum = 0;
+        System.out.println(N);
         for (int i = 0; i < N; i += 1) {
             for (int j = 0; j < N; j += 1) {
                 if (_initial[i][j] != BLANK) {
-                    int goalRow = (_initial[i][j] - 1) / N;
-                    int goalCol = _initial[i][j] - goalRow * N - 1;
-                    sum += Math.abs(goalRow - i);
-                    sum += Math.abs(goalCol - j);
+                    sum += Math.abs(goalRow(i, j) - i) + Math.abs(goalCol(i, j) - j);
                 }
             }
         }
@@ -119,13 +125,19 @@ public class Board implements WorldState {
             return true;
         }
         Board b = Board.class.cast(y);
-        for (int i = 0; i < N; i += 1) {
-            for (int j = 0; j < N; j += 1) {
-                if (this._initial[i][j] != b._initial[i][j]) {
-                    return false;
-                }
-            }
+        if (this.N != b.N) {
+            return false;
         }
+        if (this._initial != b._initial) {
+            return false;
+        }
+//        for (int i = 0; i < N; i += 1) {
+//            for (int j = 0; j < N; j += 1) {
+//                if (this._initial[i][j] != b._initial[i][j]) {
+//                    return false;
+//                }
+//            }
+//        }
         return true;
     }
 
@@ -149,4 +161,20 @@ public class Board implements WorldState {
         return s.toString();
     }
 
+    public static void main(String[] args) {
+        int[][] a = {
+                {1, 0, 2},
+                {7, 5, 4},
+                {8, 6, 3}
+        };
+        int[][] b = {
+                {1, 2, 4, 9},
+                {3, 5, 6, 10},
+                {7, 0, 8, 11},
+                {12, 13, 14, 15}
+        };
+        Board bA = new Board(a);
+        Board bB = new Board(b);
+        System.out.println(bA.manhattan());
+    }
 }

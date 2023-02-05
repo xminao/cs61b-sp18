@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Solver {
     /** Priority queue of search nodes. */
-    private MinPQ<SearchNode> queue;
     private SearchNode _initial;
     private SearchNode _goal;
 
@@ -36,13 +35,13 @@ public class Solver {
 
     /** Constructor */
     public Solver(WorldState initial) {
-        queue = new MinPQ<>(new SearchNodeComparator());
+        MinPQ<SearchNode> queue = new MinPQ<>(new SearchNodeComparator());
         _initial = new SearchNode(initial, 0, null);
         queue.insert(_initial);
-        search();
+        search(queue);
     }
 
-    private void search() {
+    private void search(MinPQ<SearchNode> queue) {
         if (queue.isEmpty()) {
             return;
         }
@@ -63,7 +62,7 @@ public class Solver {
                 queue.insert(neighbor);
             }
         }
-        search();
+        search(queue);
     }
 
     /** Returns the minimum number of moves to solve

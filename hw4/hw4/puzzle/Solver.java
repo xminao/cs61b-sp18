@@ -13,7 +13,7 @@ public class Solver {
     private SearchNode _goal;
 
     /** Each SearchNode represents one "move sequence". */
-    public class SearchNode {
+    private class SearchNode {
         private WorldState state;
         private int numberMoves;
         private SearchNode prevNode;
@@ -39,10 +39,10 @@ public class Solver {
         queue = new MinPQ<>(new SearchNodeComparator());
         _initial = new SearchNode(initial, 0, null);
         queue.insert(_initial);
-        search(queue);
+        search();
     }
 
-    private void search(MinPQ<SearchNode> queue) {
+    private void search() {
         SearchNode node = queue.delMin();
         if (node.state.isGoal()) {
             _goal = node;
@@ -60,7 +60,7 @@ public class Solver {
                 queue.insert(neighbor);
             }
         }
-        search(queue);
+        search();
     }
 
     /** Returns the minimum number of moves to solve
